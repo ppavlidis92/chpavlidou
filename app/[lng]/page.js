@@ -214,19 +214,19 @@ const teamMembers = {
       name: "Chrysa Pavlidou",
       role: "Dermatologist",
       color: "#f7d9bc",
-      image: "/images/team/chrysa.jfif",
+      image: "/images/team/chrysa.jpg",
     },
     {
       name: "Aesthetic Care",
       role: "Aesthetician",
       color: "#cdb39c",
-      image: "/images/team/esthetician.jfif",
+      image: "/images/team/esthetician.jpg",
     },
     {
       name: "Patient Care",
       role: "Reception",
       color: "#ab9682",
-      image: "/images/team/secretary.jfif",
+      image: "/images/team/secretary.jpg",
     },
   ],
   el: [
@@ -234,19 +234,19 @@ const teamMembers = {
       name: "Χρύσα Παυλίδου",
       role: "Δερματολόγος",
       color: "#f7d9bc",
-      image: "/images/team/chrysa.jfif",
+      image: "/images/team/chrysa.jpg",
     },
     {
       name: "Αισθητική Φροντίδα",
       role: "Αισθητικός",
       color: "#cdb39c",
-      image: "/images/team/esthetician.jfif",
+      image: "/images/team/esthetician.jpg",
     },
     {
       name: "Φροντίδα Ασθενών",
       role: "Υποδοχή",
       color: "#ab9682",
-      image: "/images/team/secretary.jfif",
+      image: "/images/team/secretary.jpg",
     },
   ],
 };
@@ -437,12 +437,12 @@ export default async function HomePage({ params }) {
 
           <ClinicCarousel
             images={[
-              { src: "/images/clinic/iatreio/iatrio1.jfif", alt: "Clinic interior 1" },
-              { src: "/images/clinic/iatreio/iatrio2.jfif", alt: "Clinic interior 2" },
-              { src: "/images/clinic/iatreio/iatrio3.jfif", alt: "Clinic interior 3" },
-              { src: "/images/clinic/iatreio/iatrio4.jfif", alt: "Clinic interior 4" },
-              { src: "/images/clinic/iatreio/iatrio5.jfif", alt: "Clinic interior 5" },
-              { src: "/images/clinic/iatreio/iatrio6.jfif", alt: "Clinic interior 6" },
+              { src: "/images/clinic/iatreio/iatrio1.jpg", alt: "Clinic interior 1" },
+              { src: "/images/clinic/iatreio/iatrio2.jpg", alt: "Clinic interior 2" },
+              { src: "/images/clinic/iatreio/iatrio3.jpg", alt: "Clinic interior 3" },
+              { src: "/images/clinic/iatreio/iatrio4.jpg", alt: "Clinic interior 4" },
+              { src: "/images/clinic/iatreio/iatrio5.jpg", alt: "Clinic interior 5" },
+              { src: "/images/clinic/iatreio/iatrio6.jpg", alt: "Clinic interior 6" },
             ]}
             labels={{ previous: "Previous", next: "Next" }}
           />
