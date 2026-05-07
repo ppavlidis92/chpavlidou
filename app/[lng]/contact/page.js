@@ -25,7 +25,7 @@ const contentByLanguage = {
       hoursLabel: "Opening Hours",
       phone: "22940-22580",
       email: "chpavlidu@gmail.com",
-      address: "Kyprion Agoniston & Davaki Pindou 11, Rafina 190 09, Greece",
+      address: "Davaki Pindou 11 & Kyprion Agoniston, Rafina 190 09, Greece",
       hours: [
         "Monday: 9am-2pm & 4pm-9pm",
         "Tuesday: 9am-2pm & 4pm-9pm",

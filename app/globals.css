@@ -1,19 +1,68 @@
 :root {
-  --background: #fafdfc;
-  --surface: #ffffff;
-  --foreground: #2d3a3d;
-  --muted: #6f7f82;
-  --teal: #8fd3dc;
-  --teal-strong: #5cb8c4;
-  --aqua: #eaf8fa;
-  --ivory: #fafdfc;
-  --beige: #f6f1ec;
-  --border: #dcebed;
+  --background: #0e1719;
+  --surface: #132023;
+  --surface-strong: rgba(24, 38, 42, 0.94);
+  --surface-soft: rgba(20, 33, 37, 0.82);
+  --foreground: #d6e5e7;
+  --heading: #f3fafb;
+  --muted: #94aeb2;
+  --muted-strong: #afc4c8;
+  --teal: #7fc8d2;
+  --teal-strong: #58b0bd;
+  --aqua: #15363b;
+  --ivory: #152325;
+  --beige: #1c2628;
+  --border: rgba(132, 179, 186, 0.22);
+  --header-bg: rgba(12, 20, 23, 0.41);
+  --header-bg-strong: rgba(12, 20, 23, 0.64);
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.22);
+  --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.34);
+  --text-on-accent: #081214;
+  --palette-white: #ffffff;
+  --palette-gray-soft: #e4e4e4;
+  --palette-gray-deep: #434343;
+  --palette-ink: #00093d;
+  --palette-olive: #3d3400;
+  --palette-nude-light: #f7d9bc;
+  --palette-nude-mid: #cdb39c;
+  --palette-nude-deep: #ab9682;
+  --palette-sage: #657b68;
   --font-body: Arial, sans-serif;
   --font-heading: Arial, sans-serif;
   --font-accent: Georgia, serif;
   --font-display: Georgia, serif;
   --font-script: "Brush Script MT", cursive;
+}
+
+:root[data-theme="light"] {
+  --background: #f6f4ef;
+  --surface: #ffffff;
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --surface-soft: rgba(255, 255, 255, 0.88);
+  --foreground: #434343;
+  --heading: #00093d;
+  --muted: #657b68;
+  --muted-strong: #434343;
+  --teal: #657b68;
+  --teal-strong: #00093d;
+  --aqua: #e4e4e4;
+  --ivory: #ffffff;
+  --beige: #f7d9bc;
+  --border: rgba(171, 150, 130, 0.32);
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-bg-strong: rgba(255, 255, 255, 0.97);
+  --shadow-soft: 0 18px 40px rgba(67, 67, 67, 0.08);
+  --shadow-strong: 0 24px 60px rgba(67, 67, 67, 0.12);
+  --text-on-accent: #ffffff;
+  --palette-white: #ffffff;
+  --palette-gray-soft: #e4e4e4;
+  --palette-gray-deep: #434343;
+  --palette-ink: #00093d;
+  --palette-olive: #3d3400;
+  --palette-nude-light: #f7d9bc;
+  --palette-nude-mid: #cdb39c;
+  --palette-nude-deep: #ab9682;
+  --palette-sage: #657b68;
 }
 
 html {
@@ -31,11 +80,19 @@ body {
   min-height: 100%;
   color: var(--foreground);
   background:
-    radial-gradient(circle at top left, rgba(143, 211, 220, 0.12), transparent 25%),
-    linear-gradient(180deg, #ffffff, var(--background));
+    radial-gradient(circle at top left, rgba(127, 200, 210, 0.12), transparent 26%),
+    radial-gradient(circle at top right, rgba(88, 176, 189, 0.1), transparent 24%),
+    linear-gradient(180deg, #0b1315, var(--background));
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at top left, rgba(247, 217, 188, 0.32), transparent 28%),
+    radial-gradient(circle at top right, rgba(101, 123, 104, 0.12), transparent 24%),
+    linear-gradient(180deg, #ffffff, var(--background));
 }
 
 * {
@@ -50,7 +107,7 @@ body {
 }
 
 *::selection {
-  background: rgba(143, 211, 220, 0.28);
+  background: rgba(127, 200, 210, 0.35);
 }
 
 img {

@@ -1,4 +1,10 @@
-import { Allura, Cormorant_Garamond, Inter, Lora, Montserrat } from "next/font/google";
+import {
+  Allura,
+  Cormorant_Garamond,
+  Inter,
+  Lora,
+  Montserrat,
+} from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -45,6 +51,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="el"
+      data-theme="dark"
       suppressHydrationWarning
       className={`${inter.variable} ${montserrat.variable} ${lora.variable} ${cormorantGaramond.variable} ${allura.variable}`}
     >
