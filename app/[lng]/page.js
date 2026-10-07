@@ -157,45 +157,45 @@ const serviceDetails = {
   en: [
     {
       detail: "Botox, fillers, boosters, peels, and tailored face protocols.",
-      linkLabel: "Details & prices",
+      linkLabel: "Details",
     },
     {
       detail: "Firming, cellulite, stretch-mark, hydration, and contour-support plans.",
-      linkLabel: "Details & prices",
+      linkLabel: "Details",
     },
     {
       detail: "Hair removal, pigmentation, vascular marks, scars, and rejuvenation.",
-      linkLabel: "Details & prices",
+      linkLabel: "Details",
     },
     {
       detail: "Medical assessment, dermoscopy when needed, treatment plans, and review.",
-      linkLabel: "Details & prices",
+      linkLabel: "Details",
     },
     {
       detail: "Hair-loss evaluation, scalp care, alopecia support, and follow-up.",
-      linkLabel: "Details & prices",
+      linkLabel: "Details",
     },
   ],
   el: [
     {
       detail: "Botox, υαλουρονικό, boosters, peeling και εξατομικευμένα πρωτόκολλα προσώπου.",
-      linkLabel: "Λεπτομέρειες & τιμές",
+      linkLabel: "Λεπτομέρειες",
     },
     {
       detail: "Πλάνα για σύσφιξη, κυτταρίτιδα, ραγάδες, ενυδάτωση και υποστήριξη περιγράμματος.",
-      linkLabel: "Λεπτομέρειες & τιμές",
+      linkLabel: "Λεπτομέρειες",
     },
     {
       detail: "Αποτρίχωση, δυσχρωμίες, αγγειακές βλάβες, ουλές και ανανέωση δέρματος.",
-      linkLabel: "Λεπτομέρειες & τιμές",
+      linkLabel: "Λεπτομέρειες",
     },
     {
       detail: "Ιατρική αξιολόγηση, δερματοσκόπηση όπου χρειάζεται, πλάνο θεραπείας και επανέλεγχος.",
-      linkLabel: "Λεπτομέρειες & τιμές",
+      linkLabel: "Λεπτομέρειες",
     },
     {
       detail: "Αξιολόγηση τριχόπτωσης, φροντίδα τριχωτού, υποστήριξη αλωπεκίας και παρακολούθηση.",
-      linkLabel: "Λεπτομέρειες & τιμές",
+      linkLabel: "Λεπτομέρειες",
     },
   ],
 };
@@ -217,16 +217,22 @@ const teamMembers = {
       image: "/images/team/chrysa.jpg",
     },
     {
+      name: "Patient Care",
+      role: "Reception",
+      color: "#ab9682",
+      image: "/images/team/secretary.jpg",
+    },
+    {
       name: "Aesthetic Care",
       role: "Aesthetician",
       color: "#cdb39c",
       image: "/images/team/esthetician.jpg",
     },
     {
-      name: "Patient Care",
-      role: "Reception",
-      color: "#ab9682",
-      image: "/images/team/secretary.jpg",
+      name: "Aesthetic Specialist",
+      role: "Aesthetician",
+      color: "#cdb39c",
+      image: "/images/team/esthitician2.jpg",
     },
   ],
   el: [
@@ -237,16 +243,22 @@ const teamMembers = {
       image: "/images/team/chrysa.jpg",
     },
     {
+      name: "Φροντίδα Ασθενών",
+      role: "Υποδοχή",
+      color: "#ab9682",
+      image: "/images/team/secretary.jpg",
+    },
+    {
       name: "Αισθητική Φροντίδα",
       role: "Αισθητικός",
       color: "#cdb39c",
       image: "/images/team/esthetician.jpg",
     },
     {
-      name: "Φροντίδα Ασθενών",
-      role: "Υποδοχή",
-      color: "#ab9682",
-      image: "/images/team/secretary.jpg",
+      name: "Αισθητικός Συνεργάτης",
+      role: "Αισθητικός",
+      color: "#cdb39c",
+      image: "/images/team/esthitician2.jpg",
     },
   ],
 };
@@ -401,28 +413,50 @@ export default async function HomePage({ params }) {
           </div>
 
           <div className={styles.teamShowcaseGrid}>
-            {localizedTeamMembers.map((member, index) => (
-              <article
-                key={member.name}
-                className={`${styles.teamShowcaseCard} ${
-                  index === 0 ? styles.teamShowcaseCardFeatured : ""
-                }`}
-              >
-                <div className={styles.teamShowcaseImageWrap}>
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(max-width: 720px) 100vw, (max-width: 1080px) 50vw, 560px"
-                    className={styles.teamShowcaseImage}
-                  />
-                </div>
-                <div className={styles.teamShowcaseText}>
-                  <span>{member.role}</span>
-                  <h3>{member.name}</h3>
-                </div>
-              </article>
-            ))}
+            <div className={styles.teamShowcaseColumnFeatured}>
+              {localizedTeamMembers.slice(0, 2).map((member, index) => (
+                <article
+                  key={member.name}
+                  className={`${styles.teamShowcaseCard} ${
+                    index === 0 ? styles.teamShowcaseCardFeatured : ""
+                  }`}
+                >
+                  <div className={styles.teamShowcaseImageWrap}>
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      sizes={index === 0 ? "(max-width: 720px) 90vw, 45vw" : "(max-width: 720px) 68vw, 34vw"}
+                      className={styles.teamShowcaseImage}
+                    />
+                  </div>
+                  <div className={styles.teamShowcaseText}>
+                    <span>{member.role}</span>
+                    <h3>{member.name}</h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className={styles.teamShowcaseColumnSide}>
+              {localizedTeamMembers.slice(2).map((member) => (
+                <article key={member.name} className={styles.teamShowcaseCard}>
+                  <div className={styles.teamShowcaseImageWrap}>
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      sizes="(max-width: 720px) 90vw, 35vw"
+                      className={styles.teamShowcaseImage}
+                    />
+                  </div>
+                  <div className={styles.teamShowcaseText}>
+                    <span>{member.role}</span>
+                    <h3>{member.name}</h3>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>

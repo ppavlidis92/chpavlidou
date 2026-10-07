@@ -197,7 +197,7 @@ export default async function AboutPage({ params }) {
             <div className={styles.aboutProfileCard}>
               <div className={styles.aboutProfileImageWrap}>
                 <Image
-                  src="/images/clinic/chpavlidou.png"
+                  src="/images/clinic/chpavlidou.jpg"
                   alt={content.intro.title}
                   fill
                   quality={100}

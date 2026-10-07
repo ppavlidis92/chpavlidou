@@ -1,5 +1,11 @@
-import { Play, Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import styles from "../../site.module.css";
+import { InstagramVideoCard } from "../../../components/instagram-video-card";
+import { NewsVideoCarousel } from "../../../components/news-video-carousel";
+
+const featuredVideoPostId = "DcvyXxMMsj4";
+
+const videoPostIds = ["DeHnUBwiR-q", "Dd1bFjZCBQa", "DdZVfuDChR_", "DdPBaPXiRGe", "Dc_eSbZC-qE"];
 
 const newsContent = {
   en: {
@@ -43,11 +49,8 @@ const newsContent = {
     videos: {
       kicker: "From Social Media",
       title: "Recent clips & reels",
-      items: [
-        { title: "Hydrafacial procedure walkthrough", platform: "Instagram Reel" },
-        { title: "Patient Q&A: Botox myths vs facts", platform: "Instagram Reel" },
-        { title: "Clinic tour — our treatment rooms", platform: "Instagram Story" },
-      ],
+      previous: "Previous",
+      next: "Next",
     },
   },
   el: {
@@ -91,11 +94,8 @@ const newsContent = {
     videos: {
       kicker: "Από τα Social Media",
       title: "Πρόσφατα clips & reels",
-      items: [
-        { title: "Hydrafacial — βήμα βήμα η διαδικασία", platform: "Instagram Reel" },
-        { title: "Ερωτήσεις ασθενών: Μύθοι vs αλήθεια για το Botox", platform: "Instagram Reel" },
-        { title: "Ξενάγηση στο ιατρείο — οι χώροι θεραπείας", platform: "Instagram Story" },
-      ],
+      previous: "Προηγούμενο",
+      next: "Επόμενο",
     },
   },
 };
@@ -118,16 +118,14 @@ export default async function NewsPage({ params }) {
         <div className={styles.container}>
           <div className={styles.newsFeaturedGrid}>
             <div className={styles.newsFeaturedVideo}>
-              <div className={styles.newsVideoPlaceholder}>
-                <Play className={styles.newsPlayIcon} />
-              </div>
+              <InstagramVideoCard postId={featuredVideoPostId} caption={content.featured.title} />
             </div>
             <div className={styles.newsFeaturedCopy}>
               <span className={styles.sectionKicker}>{content.featured.kicker}</span>
               <h2>{content.featured.title}</h2>
               <p>{content.featured.description}</p>
               <a
-                href="https://www.instagram.com/"
+                href="https://www.instagram.com/derma_medicare/"
                 target="_blank"
                 rel="noreferrer"
                 className={styles.secondaryButton}
@@ -170,19 +168,10 @@ export default async function NewsPage({ params }) {
             <span className={styles.sectionKicker}>{content.videos.kicker}</span>
             <h2>{content.videos.title}</h2>
           </div>
-          <div className={styles.newsVideoGrid}>
-            {content.videos.items.map((video) => (
-              <div key={video.title} className={styles.newsVideoCard}>
-                <div className={styles.newsVideoThumb}>
-                  <Play className={styles.newsPlayIconSmall} />
-                </div>
-                <div className={styles.newsVideoInfo}>
-                  <h3>{video.title}</h3>
-                  <span>{video.platform}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <NewsVideoCarousel
+            postIds={videoPostIds}
+            labels={{ previous: content.videos.previous, next: content.videos.next }}
+          />
         </div>
       </section>
     </>

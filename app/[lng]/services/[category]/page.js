@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 import { BeforeAfterSlider } from "../../../../components/before-after-slider";
 import { getServiceCategory, serviceCategories } from "../../../../lib/services";
 import styles from "../../../site.module.css";
@@ -22,9 +23,9 @@ export default async function ServiceCategoryPage({ params }) {
     servicesKicker: "Υπηρεσίες",
     detailsKicker: "Λεπτομέρειες Θεραπείας",
     detailsTitle: "Σχεδιασμένη γύρω από το δέρμα, τον χρόνο και τους στόχους σας",
-    pricesKicker: "Τιμές",
-    pricesTitle: "Ενδεικτικές τιμές",
-    pricesDescription: "Αυτές είναι ενδεικτικές τιμές και μπορούν να αντικατασταθούν με τον τελικό τιμοκατάλογο.",
+    pricesKicker: "Θεραπείες",
+    pricesTitle: "Οι θεραπείες μας",
+    pricesDescription: "Επιλέξτε μια θεραπεία για να δείτε περισσότερες λεπτομέρειες.",
     beforeAfterKicker: "Πριν & Μετά",
     beforeAfterTitle: "Σύγκριση αποτελεσμάτων",
     beforeAfterDescription: "Σύρετε αριστερά ή δεξιά για να συγκρίνετε. Πραγματικές φωτογραφίες θεραπείας μπορούν να προστεθούν αργότερα.",
@@ -35,9 +36,9 @@ export default async function ServiceCategoryPage({ params }) {
     servicesKicker: "Services",
     detailsKicker: "Treatment Details",
     detailsTitle: "Planned around your skin, timing, and goals",
-    pricesKicker: "Prices",
-    pricesTitle: "Sample starting prices",
-    pricesDescription: "These are placeholder prices and can be replaced with the final clinic price list.",
+    pricesKicker: "Treatments",
+    pricesTitle: "Our treatments",
+    pricesDescription: "Select a treatment to read more about what it involves.",
     beforeAfterKicker: "Before & After",
     beforeAfterTitle: "Result comparison",
     beforeAfterDescription: "Slide left or right to compare. Real treatment photography can be added here later for this category.",
@@ -45,6 +46,12 @@ export default async function ServiceCategoryPage({ params }) {
     beforeLabel: "Before",
     afterLabel: "After",
   };
+
+  const treatmentHalf = Math.ceil(category.treatments.length / 2);
+  const treatmentColumns = [
+    category.treatments.slice(0, treatmentHalf),
+    category.treatments.slice(treatmentHalf),
+  ];
 
   return (
     <>
@@ -83,12 +90,23 @@ export default async function ServiceCategoryPage({ params }) {
             <p>{t.pricesDescription}</p>
           </div>
 
-          <div className={styles.priceListGrid}>
-            {category.prices.map((item) => (
-              <article key={item.name} className={styles.priceListItem}>
-                <span>{item.name}</span>
-                <strong>{item.price}</strong>
-              </article>
+          <div className={styles.treatmentAccordion}>
+            {treatmentColumns.map((column, columnIndex) => (
+              <div key={columnIndex} className={styles.treatmentAccordionColumn}>
+                {column.map((item) => (
+                  <details
+                    key={item.name}
+                    name={`treatments-${category.slug}`}
+                    className={styles.treatmentAccordionItem}
+                  >
+                    <summary className={styles.treatmentAccordionSummary}>
+                      <span>{item.name}</span>
+                      <ChevronDown className={styles.treatmentAccordionIcon} />
+                    </summary>
+                    <p className={styles.treatmentAccordionBody}>{item.description}</p>
+                  </details>
+                ))}
+              </div>
             ))}
           </div>
         </div>

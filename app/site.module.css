@@ -1823,8 +1823,8 @@ html, body {
 .serviceFlipBack {
   transform: rotateY(180deg);
   background:
-    linear-gradient(180deg, rgba(61, 52, 0, 0.96), rgba(31, 38, 37, 0.98)),
-    linear-gradient(135deg, rgba(247, 217, 188, 0.16), rgba(205, 179, 156, 0.08));
+    linear-gradient(180deg, rgba(19, 32, 35, 0.96), rgba(15, 25, 28, 0.98)),
+    linear-gradient(135deg, rgba(127, 200, 210, 0.16), rgba(101, 123, 104, 0.12));
 }
 
 .serviceCardVideo,
@@ -1906,14 +1906,14 @@ html, body {
 .serviceFlipBack li::before {
   content: "•";
   margin-right: 0.35rem;
-  color: #f7d9bc;
+  color: var(--teal);
 }
 
 .serviceFlipBack a {
   display: inline-flex;
   width: fit-content;
   margin-top: auto;
-  color: #f7d9bc;
+  color: var(--teal);
   font-family: var(--font-body);
   font-size: 1.08rem;
   font-weight: 700;
@@ -1930,24 +1930,10 @@ html, body {
   line-height: 1.15;
 }
 
-.serviceCategoryGrid,
-.priceListGrid {
+.serviceCategoryGrid {
   display: grid;
   gap: 1rem;
-}
-
-.serviceCategoryGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.serviceCategoryCard,
-.priceListItem {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background:
-    linear-gradient(180deg, rgba(21, 33, 37, 0.9), rgba(15, 25, 28, 0.98)),
-    linear-gradient(135deg, rgba(247, 217, 188, 0.08), rgba(101, 123, 104, 0.12));
-  box-shadow: var(--shadow-soft);
 }
 
 .serviceCategoryCard {
@@ -2028,26 +2014,79 @@ html, body {
   box-shadow: var(--shadow-soft);
 }
 
-.priceListGrid {
+.treatmentAccordion {
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  align-items: start;
 }
 
-.priceListItem {
+.treatmentAccordionColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.treatmentAccordionItem {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(21, 33, 37, 0.9), rgba(15, 25, 28, 0.98)),
+    linear-gradient(135deg, rgba(247, 217, 188, 0.08), rgba(101, 123, 104, 0.12));
+  box-shadow: var(--shadow-soft);
+  padding: 0.3rem 1.25rem;
+}
+
+.treatmentAccordionItem[open] {
+  z-index: 5;
+}
+
+.treatmentAccordionSummary {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.15rem 1.25rem;
-}
-
-.priceListItem span {
+  padding: 1rem 0;
   color: var(--foreground);
-  line-height: 1.45;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  line-height: 1.3;
+  cursor: pointer;
+  list-style: none;
 }
 
-.priceListItem strong {
+.treatmentAccordionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.treatmentAccordionIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
   color: var(--palette-nude-light);
-  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.treatmentAccordionItem[open] .treatmentAccordionIcon {
+  transform: rotate(180deg);
+}
+
+.treatmentAccordionBody {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0.4rem 0 0;
+  padding: 0.9rem 1.25rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(21, 33, 37, 0.98), rgba(15, 25, 28, 1)),
+    linear-gradient(135deg, rgba(247, 217, 188, 0.08), rgba(101, 123, 104, 0.12));
+  box-shadow: var(--shadow-strong);
+  color: var(--muted);
+  line-height: 1.65;
 }
 
 .beforeAfterSlider {
@@ -2574,7 +2613,7 @@ html, body {
 
 .teamMemberImage {
   object-fit: cover;
-  object-position: center top;
+  object-position: center -40px;
 }
 
 .teamMemberPhoto span {
@@ -2634,30 +2673,44 @@ html, body {
 
 .teamShowcaseGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.75fr);
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 1.1rem;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 0;
+  padding: 2rem;
+}
+
+.teamShowcaseColumnFeatured {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.teamShowcaseColumnSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0;
 }
 
 .teamShowcaseCard {
-  min-width: 0;
-  padding: 0.85rem;
+  width: 100%;
+  padding: 1rem;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   background:
     linear-gradient(180deg, rgba(19, 32, 35, 0.88), rgba(10, 18, 20, 0.96)),
     linear-gradient(135deg, rgba(127, 200, 210, 0.12), rgba(40, 52, 56, 0.28));
   box-shadow: var(--shadow-soft);
 }
 
-.teamShowcaseCardFeatured {
-  grid-row: 1 / span 2;
+.teamShowcaseColumnFeatured .teamShowcaseCard:not(.teamShowcaseCardFeatured) {
+  width: 76%;
 }
 
 .teamShowcaseImageWrap {
   position: relative;
-  min-height: 250px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 8px;
   overflow: hidden;
   background:
@@ -2665,13 +2718,9 @@ html, body {
     linear-gradient(135deg, rgba(19, 54, 59, 0.72), rgba(8, 18, 20, 0.92));
 }
 
-.teamShowcaseCardFeatured .teamShowcaseImageWrap {
-  min-height: 560px;
-}
-
 .teamShowcaseImage {
   object-fit: cover;
-  object-position: center top;
+  object-position: center -40px;
 }
 
 .teamShowcaseText {
@@ -2680,9 +2729,9 @@ html, body {
 
 .teamShowcaseText span {
   display: block;
-  margin-bottom: 0.42rem;
+  margin-bottom: 0.5rem;
   color: var(--teal);
-  font-size: 0.74rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2690,16 +2739,12 @@ html, body {
 
 .teamShowcaseText h3 {
   color: var(--heading);
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   line-height: 1.15;
 }
 
-.teamShowcaseCardFeatured .teamShowcaseText {
-  display: block;
-}
-
 .teamShowcaseCardFeatured .teamShowcaseText h3 {
-  font-size: 1.55rem;
+  font-size: 1.75rem;
 }
 
 .reviewsHeader {
@@ -3160,24 +3205,111 @@ html, body {
   position: relative;
 }
 
-.newsVideoPlaceholder {
+.instagramEmbedWrap {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 380px;
-  border-radius: 16px;
-  background:
-    linear-gradient(135deg, rgba(19, 32, 35, 0.92), rgba(10, 18, 20, 0.98));
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  aspect-ratio: 889 / 1319;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.instagramEmbedWrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.instagramThumbButton {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
   border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
   cursor: pointer;
 }
 
-.newsPlayIcon {
-  width: 64px;
-  height: 64px;
-  color: var(--accent);
-  opacity: 0.85;
+.instagramThumbWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 889 / 1111;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.instagramThumbWrap iframe {
+  position: absolute;
+  top: -54px;
+  left: 0;
+  width: 100%;
+  border: none;
+}
+
+.instagramPlayOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.18);
+  color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.instagramPlayOverlay svg {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+}
+
+.instagramThumbButton:hover .instagramPlayOverlay,
+.instagramThumbButton:focus-visible .instagramPlayOverlay {
+  background: rgba(0, 0, 0, 0.32);
+}
+
+.instagramModalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(5, 10, 12, 0.82);
+}
+
+.instagramModalContent {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.instagramModalContent .instagramEmbedWrap {
+  max-width: none;
+  margin: 0;
+}
+
+.instagramModalClose {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  cursor: pointer;
 }
 
 .newsFeaturedCopy h2 {
@@ -3259,53 +3391,33 @@ html, body {
   line-height: 1.6;
 }
 
+.newsVideoCarousel {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.newsVideoCarouselViewport {
+  overflow: hidden;
+}
+
+.newsVideoCarouselTrack {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.newsVideoCarouselSlide {
+  flex-shrink: 0;
+  padding: 0 0.2rem;
+}
+
 .newsVideoGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.2rem;
-  margin-top: 2rem;
 }
 
 .newsVideoCard {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--surface-soft);
-}
-
-.newsVideoThumb {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  background:
-    linear-gradient(135deg, rgba(19, 32, 35, 0.88), rgba(10, 18, 20, 0.96));
-  cursor: pointer;
-}
-
-.newsPlayIconSmall {
-  width: 40px;
-  height: 40px;
-  color: #ffffff;
-  opacity: 0.75;
-}
-
-.newsVideoInfo {
-  padding: 1rem 1.2rem;
-}
-
-.newsVideoInfo h3 {
-  font-size: 1rem;
-  line-height: 1.35;
-  color: var(--heading);
-}
-
-.newsVideoInfo span {
-  display: block;
-  margin-top: 0.35rem;
-  color: var(--muted);
-  font-size: 0.82rem;
 }
 
 .siteFooter {
@@ -3712,8 +3824,8 @@ html, body {
 
 :root[data-theme="light"] .serviceFlipBack {
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(205, 179, 156, 0.46)),
-    linear-gradient(135deg, rgba(61, 52, 0, 0.08), rgba(101, 123, 104, 0.14));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(228, 228, 228, 0.5)),
+    linear-gradient(135deg, rgba(127, 200, 210, 0.1), rgba(101, 123, 104, 0.14));
 }
 
 :root[data-theme="light"] .treatmentPrice,
@@ -3825,14 +3937,13 @@ html, body {
 
 :root[data-theme="light"] .navDropdownMenu,
 :root[data-theme="light"] .serviceCategoryCard,
-:root[data-theme="light"] .priceListItem {
+:root[data-theme="light"] .treatmentAccordionItem {
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 217, 188, 0.42)),
     linear-gradient(135deg, rgba(228, 228, 228, 0.4), rgba(101, 123, 104, 0.08));
 }
 
 :root[data-theme="light"] .serviceCategoryCard span,
-:root[data-theme="light"] .priceListItem strong,
 :root[data-theme="light"] .treatmentPrice {
   color: var(--palette-ink);
 }
@@ -3910,25 +4021,19 @@ html, body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .teamShowcaseGrid {
+  .treatmentAccordion {
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
   }
 
-  .teamShowcaseCardFeatured {
-    grid-row: auto;
-  }
 
   .heroGrid,
   .splitSection,
   .cardGrid,
   .serviceFlipGrid,
-  .teamShowcaseGrid,
   .clinicShowcaseGrid,
   .clinicGalleryGrid,
   .serviceCategoryGrid,
   .serviceDetailGrid,
-  .priceListGrid,
   .resultGrid,
   .reviewGrid,
   .contactShowcase,
@@ -4231,12 +4336,12 @@ html, body {
     grid-template-columns: 1fr;
   }
 
-  .teamShowcaseCardFeatured .teamShowcaseImageWrap {
-    min-height: 380px;
+  .teamShowcaseGrid {
+    grid-template-columns: 1fr;
   }
 
-  .teamShowcaseCardFeatured .teamShowcaseText {
-    grid-template-columns: 1fr;
+  .teamShowcaseColumnFeatured .teamShowcaseCard:not(.teamShowcaseCardFeatured) {
+    width: 76%;
   }
 
   .clinicShowcaseGrid {

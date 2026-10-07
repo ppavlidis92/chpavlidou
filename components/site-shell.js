@@ -140,10 +140,20 @@ export function SiteShell({ children, language, labels }) {
                 {labels.nav.news}
               </Link>
               <div className={styles.headerSocialLinks} aria-label="Social media">
-                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <a
+                  href="https://www.instagram.com/derma_medicare/"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                >
                   <InstagramLogo className={styles.headerSocialIcon} />
                 </a>
-                <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook">
+                <a
+                  href="https://www.facebook.com/profile.php?id=61593752171901"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook"
+                >
                   <FacebookLogo className={styles.headerSocialIcon} />
                 </a>
               </div>
